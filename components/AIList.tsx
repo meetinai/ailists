@@ -1,11 +1,12 @@
 import React from 'react';
+import Link from 'next/link';
 
 const AIList = () => {
   const aiChats = [
-    { name: 'ChatGPT', ownedBy: 'OpenAI', site: 'https://openai.com' },
-    { name: 'Bing Copilot', ownedBy: 'Microsoft', site: 'https://www.microsoft.com' },
-    { name: 'Claude', ownedBy: 'Claude Inc.', site: 'https://claude.ai' },
-    { name: 'Hugging Face Chat', ownedBy: 'Hugging Face', site: 'https://huggingface.co' },
+    { name: 'ChatGPT', ownedBy: 'OpenAI', site: 'https://openai.com', logo: '/logos/openai.png', description: 'ChatGPT is a large-scale, multi-turn, Transformer-based language model trained by OpenAI.', capabilities: 'Text generation, Conversational AI', price: 'Free tier available, paid plans start at $20/month' },
+    { name: 'Bing Copilot', ownedBy: 'Microsoft', site: 'https://www.microsoft.com', logo: '/logos/microsoft.png', description: 'Bing Copilot is a conversational AI developed by Microsoft.', capabilities: 'Text generation, Conversational AI', price: 'Free tier available, paid plans start at $20/month' },
+    { name: 'Claude', ownedBy: 'Claude Inc.', site: 'https://claude.ai', logo: '/logos/claude.png', description: 'Claude is a conversational AI developed by Claude Inc.', capabilities: 'Text generation, Conversational AI', price: 'Free tier available, paid plans start at $20/month' },
+    { name: 'Hugging Face Chat', ownedBy: 'Hugging Face', site: 'https://huggingface.co', logo: '/logos/huggingface.png', description: 'Hugging Face Chat is a conversational AI developed by Hugging Face.', capabilities: 'Text generation, Conversational AI', price: 'Free tier available, paid plans start at $20/month' },
     // Add more AI chats as needed
   ];
 
@@ -17,6 +18,9 @@ const AIList = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Logo
+                  </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Name
                   </th>
@@ -32,7 +36,16 @@ const AIList = () => {
                 {aiChats.map((chat, chatIdx) => (
                   <tr key={chatIdx}>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{chat.name}</div>
+                      <div className="text-sm text-gray-900">
+                        <img src={chat.logo} alt={chat.name} className="h-10 w-10 rounded-full" />
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-900">
+                        <Link href={`/ai/${chat.name.toLowerCase().replace(/ /g, '')}`}>
+                          <a>{chat.name}</a>
+                        </Link>
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-500">{chat.ownedBy}</div>
