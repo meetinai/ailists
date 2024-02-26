@@ -1,13 +1,11 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import React from 'react';
+import AIList from '../components/AIList';
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-    </main>
-  )
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 className="text-4xl font-bold text-center my-8">AI Chats</h1>
+      <AIList />
+    </div>
+  );
 }
